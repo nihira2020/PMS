@@ -1,0 +1,31 @@
+@if(showmenu){
+    <div>
+        <mat-toolbar color="primary" class="mat-elevation-z8">
+            <button mat-icon-button >
+                <mat-icon>menu</mat-icon>
+            </button>
+            <span>Property Management system</span>
+            <span class="example-spacer"></span>
+            <button mat-button routerLink="/company-list">Companies</button>
+            <button mat-button routerLink="/login">Properties</button>
+            <button mat-button routerLink="/login">Tenats</button>
+            <button mat-button routerLink="/login">Transactions</button>
+            
+            <span>{{Loginuser}}</span>
+            <button mat-button [matMenuTriggerFor]="profile"><mat-icon>arrow_drop_down</mat-icon></button>
+            <mat-menu #profile>
+                <button mat-menu-item routerLink="/login">Logout</button>
+            </mat-menu>
+    
+        </mat-toolbar>
+        <div style="text-align: center;min-height: 600px;">
+            <router-outlet></router-outlet>
+        </div>
+    
+    
+    </div>
+}@else{
+    <div style="text-align: center;min-height: 600px;">
+        <router-outlet></router-outlet>
+    </div> 
+}

@@ -1,0 +1,11 @@
+mat-card {
+    margin: 2%;
+    text-align: left;
+    width: 80%;
+    margin-left: 10%;
+    border: 1px solid #ccc;
+}
+
+.mat-mdc-raised-button{
+    width: 100%;
+}
