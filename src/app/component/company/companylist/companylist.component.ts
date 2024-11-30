@@ -7,17 +7,23 @@ import { Companies } from '../../../model/Companies';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatListModule } from '@angular/material/list';
+import { MatTableDataSource, MatTableModule } from '@angular/material/table';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-companylist',
   standalone: true,
-  imports: [MatCardModule, MatButtonModule, MatGridListModule, MatDividerModule, MatListModule],
+  imports: [MatCardModule, MatButtonModule, MatDividerModule, MatTableModule,
+    MatIconModule
+  ],
   templateUrl: './companylist.component.html',
   styleUrl: './companylist.component.css'
 })
 export class CompanylistComponent implements OnInit {
 
   companyList!: Companies[];
+  displayedColumns: string[] = ['info','action'];
+  dataSource!: MatTableDataSource<Companies>;
 
   constructor(private router: Router, private service: CompanyService) {
 
@@ -33,6 +39,7 @@ export class CompanylistComponent implements OnInit {
   Loadallcompany() {
     this.service.GetAllCompany().subscribe(item => {
       this.companyList = item;
+      this.dataSource=new MatTableDataSource(this.companyList);
     })
   }
 

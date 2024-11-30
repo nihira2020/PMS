@@ -1,56 +1,50 @@
+@if(companyList.length>0){
 <mat-card>
     <mat-card-header>
         <!-- <h2>Invoice Listing</h2> -->
-        <button mat-raised-button color="primary" (click)="Addcompany()">Add Invoice</button>
+        <button mat-raised-button color="primary" (click)="Addcompany()">Add Company</button>
     </mat-card-header>
     <mat-card-content>
+        
         <h2>Company List</h2>
-        <div>
-            @for(item of companyList;track item){
-            <mat-card class="example-card" appearance="outlined">
-                <!-- <mat-card-header>
-                    <div mat-card-avatar class="example-header-image"></div>
-                    <mat-card-title>Shiba Inu</mat-card-title>
-                    <mat-card-subtitle>Dog Breed</mat-card-subtitle>
-                </mat-card-header>
-                <img mat-card-image src="" alt="Photo of a Shiba Inu"> -->
-                <mat-card-content>
-                    <mat-grid-list cols="3" rowHeight="2:1">
-                        <mat-grid-tile colspan="1">
-                            <mat-list style="width: 400px;white-space: initial;">
-                                <mat-list-item><h1>{{item.companyName}}</h1></mat-list-item>
-                             
-                                <mat-list-item> 
-                                    <h3>{{item.contactEmail}}</h3>
-                                </mat-list-item>
-                                <mat-list-item> 
-                                    <h3>{{item.contactPhone}}</h3>
-                                </mat-list-item>
-                                <mat-list-item> 
-                                    <p>{{item.address}}</p>
-                                </mat-list-item>
-                              </mat-list>
-                        </mat-grid-tile>
-                        <mat-grid-tile colspan="1">
+        <table mat-table [dataSource]="dataSource" style="margin-top: 5px;" class="mat-elevation-z8">
 
-                        </mat-grid-tile>
-                        <mat-grid-tile colspan="1">
-                            <mat-list>
-                               
-                                <mat-list-item> 
-                                    <button mat-raised-button color="primary" (click)="updateCompany(item.id)">Update Company</button>
-                                </mat-list-item>
-                                <mat-list-item> 
-                                    <button mat-raised-button color="primary" (click)="manageuser(item.id)">Manage Stakeholder</button>
-                                </mat-list-item>
-                              </mat-list>
-                        </mat-grid-tile>
-                    </mat-grid-list>
-                </mat-card-content>
-            </mat-card>
-            }
-        </div>
+            <ng-container matColumnDef="info">
+                <th mat-header-cell *matHeaderCellDef> Name </th>
+                <td mat-cell *matCellDef="let element">
+                    <h3>{{element.contactEmail}}</h3>
+                    <h3>{{element.contactPhone}}</h3>
+                    <p>{{element.address}}</p>
+                </td>
+            </ng-container>
+
+
+            <ng-container matColumnDef="action">
+                <th mat-header-cell *matHeaderCellDef> Action </th>
+                <td mat-cell *matCellDef="let element">
+                    <button mat-raised-button color="primary" (click)="updateCompany(element.companyId)">Update
+                        Company</button>
+                    <br>
+                    <button mat-raised-button color="primary" (click)="manageuser(element.companyId)">Manage
+                        Stakeholder</button>
+                </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+       
 
     </mat-card-content>
 
 </mat-card>
+}
+@else {
+    <mat-card style="width: 30%;margin-left: 30%;margin-top: 10%;">
+        <mat-card-content>
+            <h2>No company records available.  </h2>
+            <a mat-flat-button color="primary" (click)="Addcompany()" ><mat-icon>add</mat-icon>Click here to create company.</a>
+        </mat-card-content>
+    </mat-card>
+      
+}

@@ -17,7 +17,7 @@ import { PersonService } from '../../../service/person.service';
   standalone: true,
   providers: [provideNativeDateAdapter()],
   imports: [MatCardModule, MatFormFieldModule, MatInputModule, MatButtonModule,
-    ReactiveFormsModule, RouterLink, MatSelectModule, MatDatepickerModule],
+    ReactiveFormsModule, MatSelectModule, MatDatepickerModule],
   templateUrl: './createperson.component.html',
   styleUrl: './createperson.component.css'
 })
@@ -95,11 +95,7 @@ export class CreatepersonComponent implements OnInit {
           // this._response = item;
           // if (this._response.result === 'pass') {
           this.toastr.success('Created successfully', 'Success');
-          if(this.companyId>0){
-            this.router.navigateByUrl('company/'+this.companyId+'/persons');
-          }else{
-            this.router.navigateByUrl('/person-list');
-          }
+          this.RedirectToList();
           
           // } else {
           //   this.toastr.error('Due to:' + this._response.message, 'Failed');
@@ -112,16 +108,20 @@ export class CreatepersonComponent implements OnInit {
           // this._response = item;
           // if (this._response.result === 'pass') {
           this.toastr.success('Updated successfully', 'Success');
-          if(this.companyId>0){
-            this.router.navigateByUrl('company/'+this.companyId+'/persons');
-          }else{
-            this.router.navigateByUrl('/person-list');
-          }
+          this.RedirectToList()
           //} else {
           // this.toastr.error('Due to:' + this._response.message, 'Failed');
           //}
         })
       }
+    }
+  }
+
+  RedirectToList(){
+    if(this.companyId>0){
+      this.router.navigateByUrl('company/'+this.companyId+'/persons');
+    }else{
+      this.router.navigateByUrl('/person-list');
     }
   }
 }

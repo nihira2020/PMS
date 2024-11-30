@@ -62,8 +62,8 @@
             <ng-container matColumnDef="action">
                 <th mat-header-cell *matHeaderCellDef> Action </th>
                 <td mat-cell *matCellDef="let element"> 
-                    <button mat-raised-button color="primary" (click)="EditProperty(element.id)">Edit</button>
-                    <button mat-raised-button color="accent" (click)="RemoveProperty(element.id)">Delete</button>
+                    <button mat-raised-button color="primary" (click)="EditProperty(element.propertyId)">Edit</button>
+                    <button mat-raised-button color="accent" (click)="RemoveProperty(element.propertyId)">Delete</button>
                 </td>
               </ng-container>
           

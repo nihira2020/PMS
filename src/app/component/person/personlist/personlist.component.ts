@@ -53,6 +53,7 @@ export class PersonlistComponent implements OnInit {
   LoadallpersonsforCompany(companyId: any) {
     let sub = this.service.GetAllPersonsbyCompany(companyId).subscribe(item => {
       this.personList = item;
+      this.personList=this.personList.filter(o=>o.companyId==companyId);
       this.dataSource = new MatTableDataSource(this.personList)
     })
   }

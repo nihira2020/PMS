@@ -7,11 +7,12 @@
       "contactEmail": "contactus@evansproperty.co.uk",
       "contactPhone": "07769312374",
       "address": "Goldcrest way, Hampton Vale, PE7 8PP",
-      "createdAt": "2024-11-16T15:45:03.306Z",
-      "updatedAt": "2024-11-16T15:45:03.306Z"
+      "createdAt": "2024-11-30T17:36:07.882Z",
+      "updatedAt": "2024-11-30T17:36:07.882Z"
     },
     {
       "id": 4,
+      "companyId": 4,
       "companyName": "ANU INVESTMENTS LTD",
       "contactEmail": "contactus@anuinvestments.co.uk",
       "contactPhone": "07712312345",
@@ -133,6 +134,32 @@
       "dob": "2024-11-23T03:13:50.895Z",
       "createdAt": "2024-11-23T03:14:42.877Z",
       "updatedAt": "2024-11-23T03:14:42.877Z"
+    },
+    {
+      "id": 8,
+      "personId": 0,
+      "companyId": 4,
+      "firstName": "test 1",
+      "lastName": "rr",
+      "nationality": "British",
+      "role": "admin",
+      "email": "tt",
+      "dob": "2024-11-30T17:55:49.852Z",
+      "createdAt": "2024-11-30T17:56:02.639Z",
+      "updatedAt": "2024-11-30T17:56:02.639Z"
+    },
+    {
+      "id": 9,
+      "personId": 0,
+      "companyId": 5,
+      "firstName": "yy",
+      "lastName": "hh",
+      "nationality": "British",
+      "role": "manager",
+      "email": "ff",
+      "dob": "2024-11-30T17:56:17.360Z",
+      "createdAt": "2024-11-30T17:56:27.565Z",
+      "updatedAt": "2024-11-30T17:56:27.565Z"
     }
   ]
 }
