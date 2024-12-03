@@ -63,21 +63,6 @@
       "rent": "1075.00",
       "createdAt": "2024-11-08T12:36:32.000Z",
       "updatedAt": "2024-11-08T12:36:32.000Z"
-    },
-    {
-      "id": 5,
-      "propertyId": 0,
-      "name": "new",
-      "address": "1st sreet",
-      "type": "residential",
-      "bedrooms": "2",
-      "bathrooms": "2",
-      "size": "1200",
-      "purchaseDate": "2024-11-17T14:58:40.078Z",
-      "value": 0,
-      "rent": 0,
-      "createdAt": "2024-11-17T15:00:00.715Z",
-      "updatedAt": "2024-11-17T15:00:00.715Z"
     }
   ],
   "persons": [
@@ -95,32 +80,6 @@
       "otpExpiration": null,
       "createdAt": "2024-11-08T12:06:15.000Z",
       "updatedAt": "2024-11-08T12:13:00.000Z"
-    },
-    {
-      "id": 5,
-      "personId": 5,
-      "companyId": 1,
-      "firstName": "Steve",
-      "lastName": "Smith",
-      "nationality": "British",
-      "role": "admin",
-      "email": "steve.smith@gmail.com",
-      "dob": "1965-01-01T00:00:00.000Z",
-      "createdAt": "2024-11-22T17:47:45.301Z",
-      "updatedAt": "2024-11-22T17:47:45.301Z"
-    },
-    {
-      "id": 6,
-      "personId": 6,
-      "companyId": 0,
-      "firstName": "User1",
-      "lastName": "User",
-      "nationality": "British",
-      "role": "admin",
-      "email": "tet@in.com",
-      "dob": "2017-06-12T18:30:00.000Z",
-      "createdAt": "2024-11-23T03:12:05.910Z",
-      "updatedAt": "2024-11-23T03:12:05.910Z"
     },
     {
       "id": 7,
@@ -160,6 +119,20 @@
       "dob": "2024-11-30T17:56:17.360Z",
       "createdAt": "2024-11-30T17:56:27.565Z",
       "updatedAt": "2024-11-30T17:56:27.565Z"
+    }
+  ],
+  "tenants": [
+    {
+      "id": 7,
+      "tenantId": 7,
+      "firstName": "test",
+      "lastName": "rr",
+      "email": "hh@in.com",
+      "phone": "55",
+      "rentAmount": "200",
+      "createdAt": "2024-12-03T11:00:43.422Z",
+      "updatedAt": "2024-12-03T11:00:43.422Z",
+      "propertyId": 4
     }
   ]
 }
