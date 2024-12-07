@@ -63,6 +63,22 @@
       "rent": "1075.00",
       "createdAt": "2024-11-08T12:36:32.000Z",
       "updatedAt": "2024-11-08T12:36:32.000Z"
+    },
+    {
+      "id": 5,
+      "propertyId": 0,
+      "companyId": 5,
+      "name": "New 1",
+      "address": "new street",
+      "type": "residential",
+      "bedrooms": "1",
+      "bathrooms": "1",
+      "size": "230",
+      "purchaseDate": "2024-12-07T16:41:19.608Z",
+      "value": 0,
+      "rent": 0,
+      "createdAt": "2024-12-07T16:41:41.884Z",
+      "updatedAt": "2024-12-07T16:41:41.884Z"
     }
   ],
   "persons": [
@@ -96,7 +112,7 @@
     },
     {
       "id": 8,
-      "personId": 0,
+      "personId": 8,
       "companyId": 4,
       "firstName": "test 1",
       "lastName": "rr",
@@ -109,16 +125,16 @@
     },
     {
       "id": 9,
-      "personId": 0,
+      "personId": 9,
       "companyId": 5,
-      "firstName": "yy",
+      "firstName": "Rahul",
       "lastName": "hh",
       "nationality": "British",
       "role": "manager",
       "email": "ff",
       "dob": "2024-11-30T17:56:17.360Z",
-      "createdAt": "2024-11-30T17:56:27.565Z",
-      "updatedAt": "2024-11-30T17:56:27.565Z"
+      "createdAt": "2024-12-07T16:38:13.373Z",
+      "updatedAt": "2024-12-07T16:38:13.373Z"
     }
   ],
   "tenants": [

@@ -1,1 +1,56 @@
-<p>createtrans works!</p>
+<form [formGroup]="tranForm" (ngSubmit)="SaveTrans()">
+
+    <mat-card>
+        <mat-card-header>
+            <h1>{{title}}</h1>
+        </mat-card-header>
+        <mat-card-content>
+
+            <mat-form-field>
+                <mat-label>Company</mat-label>
+                <mat-select formControlName="companyId" (selectionChange)="companyChange($event.value)">
+                    <mat-option value="0">Select Company</mat-option>
+                    @for(item of companyList;track item){
+                    <mat-option [value]="item.companyId">{{item.companyName}}</mat-option>
+                    }
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>Property</mat-label>
+                <mat-select formControlName="propertyId" (selectionChange)="propertyChange($event.value)">
+                    <mat-option value="0">Select Property</mat-option>
+                    @for(item of propertyList;track item){
+                    <mat-option [value]="item.propertyId">{{item.name}}</mat-option>
+                    }
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>Tenant</mat-label>
+                <mat-select formControlName="tenantId" (selectionChange)="tenantChange($event.value)">
+                    <mat-option value="0">Select Tenant</mat-option>
+                    @for(item of tenantList;track item){
+                    <mat-option [value]="item.tenantId">{{item.firstName}} {{item.lastName}}</mat-option>
+                    }
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>Rent</mat-label>
+                <input formControlName="rent" matInput />
+            </mat-form-field>
+
+        </mat-card-content>
+        <mat-card-actions>
+            <div class="div-50">
+                <button type="submit" mat-raised-button color="primary">Save</button>
+            </div>
+            <div class="div-50">
+                <a (click)="RedirectToList()" mat-raised-button color="accent">Cancel</a>
+            </div>
+
+        </mat-card-actions>
+    </mat-card>
+
+</form>
