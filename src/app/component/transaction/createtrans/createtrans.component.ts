@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, effect, OnInit, signal } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
@@ -14,6 +14,8 @@ import { Properties } from '../../../model/Properties';
 import { Tenants } from '../../../model/Tenants';
 import { PropertyService } from '../../../service/property.service';
 import { TenatService } from '../../../service/tenat.service';
+import { Transaction } from '../../../model/Transaction';
+import { TransService } from '../../../service/trans.service';
 
 @Component({
   selector: 'app-createtrans',
@@ -24,26 +26,36 @@ import { TenatService } from '../../../service/tenat.service';
   styleUrl: './createtrans.component.css'
 })
 export class CreatetransComponent implements OnInit {
-  title = 'Rent Pay'
+  title = 'Rent Pay';
   companyList: Companies[] = []
   propertyList: Properties[] = []
   tenantList: Tenants[] = []
+  currentRoute = signal('')
 
-  constructor(private builder: FormBuilder, private service: CompanyService,
+  constructor(private builder: FormBuilder, private Cservice: CompanyService,
     private router: Router, private toastr: ToastrService,
-    private pservice: PropertyService, private tservice: TenatService
+    private pservice: PropertyService, private tservice: TenatService,
+    private service: TransService
   ) {
-
+    effect(() => {
+      this.currentRoute.set(this.router.url);
+    })
   }
 
   ngOnInit(): void {
+    this.currentRoute.set(this.router.url);
+    if (this, this.currentRoute() === '/expense') {
+      this.title = 'Expense';
+    } else {
+      this.title = 'Rent Pay';
+    }
     this.loadallcompany();
   }
 
 
 
   loadallcompany() {
-    this.service.GetAllCompany().subscribe(item => {
+    this.Cservice.GetAllCompany().subscribe(item => {
       this.companyList = item;
     })
   }
@@ -76,15 +88,15 @@ export class CreatetransComponent implements OnInit {
 
   tenantChange(value: any) {
     let tenantId = value as string;
-    if (tenantId != '' && tenantId!='0') {
+    if (tenantId != '' && tenantId != '0') {
       this.tservice.GetTenant(tenantId).subscribe(item => {
-       let tendata=item;
-       if(tendata!=null){
-        this.tranForm.controls['rent'].setValue(tendata.rentAmount)
-       }
+        let tendata = item;
+        if (tendata != null) {
+          this.tranForm.controls['amount'].setValue(tendata.rentAmount)
+        }
       })
     } else {
-      this.tranForm.controls['rent'].setValue(0)
+      this.tranForm.controls['amount'].setValue(0)
     }
   }
 
@@ -92,34 +104,40 @@ export class CreatetransComponent implements OnInit {
     companyId: this.builder.control(0),
     propertyId: this.builder.control(0, Validators.required),
     tenantId: this.builder.control(0, Validators.required),
-    rent: this.builder.control(0, Validators.required)
+    amount: this.builder.control(0, Validators.required),
+    expense: this.builder.control(0, Validators.required)
   })
 
   SaveTrans() {
-    // if (this.personForm.valid) {
-    //   let _obj: Persons = {
-    //     id: 0,
-    //     personId: 0,
-    //     companyId: this.companyId,
-    //     firstName: this.personForm.value.firstname as string,
-    //     lastName: this.personForm.value.lastname as string,
-    //     nationality: this.personForm.value.nationality as string,
-    //     role: this.personForm.value.role as string,
-    //     email: this.personForm.value.email as string,
-    //     dob: this.personForm.value.dob as Date,
-    //     createdAt: new Date(),
-    //     updatedAt: new Date()
-    //   }
-    // this.service.createPerson(_obj).subscribe(item => {
-    //   this.toastr.success('Created successfully', 'Success');
-    //   this.RedirectToList();
-    // })
-    // }
+    if (this.tranForm.valid) {
+      let _obj: Transaction = {
+        id: 0,
+        TranId: 0,
+        companyId: this.tranForm.value.companyId as number,
+        propertyId: this.tranForm.value.propertyId as number,
+        tenantId: this.tranForm.value.tenantId as number,
+        amount: this.tranForm.value.amount as number,
+        complaintCharge: this.tranForm.value.expense as number,
+      }
+      if (this.title === 'Expense') {
+        _obj.amount=0;
+        this.service.SaveExpense(_obj).subscribe(item => {
+          this.toastr.success('Saved successfully', 'Success');
+          this.RedirectToList();
+        })
+      } else {
+        _obj.complaintCharge=0;
+        this.service.SaveRentPay(_obj).subscribe(item => {
+          this.toastr.success('Saved successfully', 'Success');
+          this.RedirectToList();
+        })
+      }
+    }
   }
 
   RedirectToList() {
-
-    this.router.navigateByUrl('/person-list');
+    this.tranForm.reset();
+    // this.router.navigateByUrl('/person-list');
 
   }
 }

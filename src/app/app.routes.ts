@@ -67,7 +67,10 @@ export const routes: Routes = [
         path: 'trans-list', component: TranslistComponent,canActivate:[authGuard]
     },
     {
-        path: 'create-trans', component: CreatetransComponent,canActivate:[authGuard]
+        path: 'rentpay', component: CreatetransComponent,canActivate:[authGuard]
+    },
+    {
+        path: 'expense', component: CreatetransComponent,canActivate:[authGuard]
     },
     {
         path: 'update-trans/:id', component: CreatetransComponent,canActivate:[authGuard]

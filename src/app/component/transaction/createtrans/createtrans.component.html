@@ -35,11 +35,17 @@
                     }
                 </mat-select>
             </mat-form-field>
-
+            @if(title==='Expense'){
+            <mat-form-field>
+                <mat-label>Complaint Charge</mat-label>
+                <input formControlName="expense" matInput />
+            </mat-form-field>
+            }@else{
             <mat-form-field>
                 <mat-label>Rent</mat-label>
-                <input formControlName="rent" matInput />
+                <input formControlName="amount" matInput />
             </mat-form-field>
+            }
 
         </mat-card-content>
         <mat-card-actions>

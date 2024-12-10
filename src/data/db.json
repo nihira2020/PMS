@@ -150,5 +150,27 @@
       "updatedAt": "2024-12-03T11:00:43.422Z",
       "propertyId": 4
     }
+  ],
+  "pay-rent": [
+    {
+      "id": 1,
+      "TranId": 0,
+      "companyId": 3,
+      "propertyId": 4,
+      "tenantId": 7,
+      "amount": "200",
+      "complaintCharge": 0
+    }
+  ],
+  "pay-expense": [
+    {
+      "id": 1,
+      "TranId": 0,
+      "companyId": 3,
+      "propertyId": 4,
+      "tenantId": 7,
+      "amount": 0,
+      "complaintCharge": "200"
+    }
   ]
 }
