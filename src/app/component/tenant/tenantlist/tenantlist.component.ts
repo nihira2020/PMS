@@ -11,26 +11,36 @@ import { MatButtonModule } from '@angular/material/button';
 import { CommonModule } from '@angular/common';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { Companies } from '../../../model/Companies';
+import { Properties } from '../../../model/Properties';
+import { MatSelectModule } from '@angular/material/select';
+import { PropertyService } from '../../../service/property.service';
+import { CompanyService } from '../../../service/company.service';
 
 @Component({
   selector: 'app-tenantlist',
   standalone: true,
   imports: [MatCardModule, MatTableModule, MatPaginatorModule, MatSortModule,
-    MatButtonModule, CommonModule, MatFormFieldModule, MatInputModule],
+    MatButtonModule, CommonModule, MatFormFieldModule, MatInputModule,
+    MatSelectModule],
   templateUrl: './tenantlist.component.html',
   styleUrl: './tenantlist.component.css'
 })
 export class TenantlistComponent implements OnInit {
   tenantList: Tenants[] = [];
+  companyList: Companies[] = []
+  propertyList: Properties[] = []
   displayedColumns: string[] = ['firstname', 'lastname', 'email', 'phone', 'rental', 'action'];
 
   dataSource!: MatTableDataSource<Tenants>;
   constructor(private service: TenatService, private router: Router,
-    private toastr: ToastrService
+    private toastr: ToastrService, private pservice: PropertyService,
+    private Cservice: CompanyService
   ) {
 
   }
   ngOnInit(): void {
+    this.loadallcompany();
     this.Loadalltenats();
   }
 
@@ -55,5 +65,32 @@ export class TenantlistComponent implements OnInit {
       })
     }
   }
+
+  loadallcompany() {
+    this.Cservice.GetAllCompany().subscribe(item => {
+      this.companyList = item;
+    })
+  }
+
+  companyChange(value: any) {
+    let companyId = value as number;
+    if (companyId > 0) {
+      this.pservice.GetAllProperty().subscribe(item => {
+        this.propertyList = item;
+        this.propertyList = this.propertyList.filter(o => o.companyId == companyId);
+      })
+    } else {
+      this.propertyList = [];
+      this.Loadalltenats();
+    }
+
+  }
+
+  propertyChange(value: any) {
+    let propertyId = value as number;
+    let data = this.tenantList.filter(o => o.propertyId === propertyId);
+      this.dataSource = new MatTableDataSource(data)
+  }
+
 
 }

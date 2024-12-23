@@ -146,8 +146,20 @@
       "email": "hh@in.com",
       "phone": "55",
       "rentAmount": "200",
-      "createdAt": "2024-12-03T11:00:43.422Z",
-      "updatedAt": "2024-12-03T11:00:43.422Z",
+      "createdAt": "2024-12-23T17:58:04.092Z",
+      "updatedAt": "2024-12-23T17:58:04.092Z",
+      "propertyId": 3
+    },
+    {
+      "id": 8,
+      "tenantId": 0,
+      "firstName": "new 1",
+      "lastName": "test",
+      "email": "t@in.com",
+      "phone": "333",
+      "rentAmount": "40",
+      "createdAt": "2024-12-23T17:50:05.670Z",
+      "updatedAt": "2024-12-23T17:50:05.670Z",
       "propertyId": 4
     }
   ],
@@ -171,6 +183,60 @@
       "tenantId": 7,
       "amount": 0,
       "complaintCharge": "200"
+    }
+  ],
+  "transactions": [
+    {
+      "transactionId": 4,
+      "tenantId": 7,
+      "companyId": 8,
+      "propertyId": 8,
+      "amount": "980.00",
+      "complaintCharges": "0.00",
+      "paymentDate": "2024-12-02T20:39:34.000Z",
+      "createdAt": "2024-12-02T20:39:34.000Z",
+      "updatedAt": "2024-12-02T20:39:34.000Z"
+    },
+    {
+      "transactionId": 5,
+      "tenantId": 6,
+      "companyId": 8,
+      "propertyId": 8,
+      "amount": "0.00",
+      "complaintCharges": "200.00",
+      "paymentDate": "2024-12-04T18:53:43.000Z",
+      "createdAt": "2024-12-04T18:53:43.000Z",
+      "updatedAt": "2024-12-04T18:53:43.000Z"
+    },
+    {
+      "transactionId": 6,
+      "tenantId": 7,
+      "companyId": 8,
+      "propertyId": 8,
+      "amount": "0.00",
+      "complaintCharges": "250.00",
+      "paymentDate": "2024-12-04T19:03:23.000Z",
+      "createdAt": "2024-12-04T19:03:23.000Z",
+      "updatedAt": "2024-12-04T19:03:23.000Z"
+    },
+    {
+      "transactionId": 7,
+      "tenantId": 7,
+      "companyId": 8,
+      "propertyId": 8,
+      "amount": "0.00",
+      "complaintCharges": "1100.00",
+      "paymentDate": "2024-12-08T13:40:35.000Z",
+      "createdAt": "2024-12-08T13:40:35.000Z",
+      "updatedAt": "2024-12-08T13:40:35.000Z"
+    }
+  ],
+  "totals": [
+    {
+      "id": 7,
+      "totalIncome": 980,
+      "totalExpenses": 1550,
+      "balance": -570
     }
   ]
 }

@@ -4,6 +4,25 @@
         <button mat-raised-button color="primary" (click)="AddTenant()">Add Tenant</button>
     </mat-card-header>
     <mat-card-content>
+      <mat-form-field>
+        <mat-label>Company</mat-label>
+        <mat-select (selectionChange)="companyChange($event.value)">
+            <mat-option value="0">Select Company</mat-option>
+            @for(item of companyList;track item){
+            <mat-option [value]="item.companyId">{{item.companyName}}</mat-option>
+            }
+        </mat-select>
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>Property</mat-label>
+        <mat-select (selectionChange)="propertyChange($event.value)">
+            <mat-option value="0">Select Property</mat-option>
+            @for(item of propertyList;track item){
+            <mat-option [value]="item.propertyId">{{item.name}}</mat-option>
+            }
+        </mat-select>
+    </mat-form-field>
         <table mat-table [dataSource]="dataSource" style="margin-top: 5px;" class="mat-elevation-z8">
 
             <!--- Note that these columns can be defined in any order.

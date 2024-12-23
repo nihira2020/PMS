@@ -2,8 +2,19 @@
     <mat-card-header>
         <!-- <h2>Invoice Listing</h2> -->
         <button mat-raised-button color="primary" (click)="AddProperty()">Add Property</button>
+        <br>
+        
     </mat-card-header>
     <mat-card-content>
+      <mat-form-field style="width: 30%;">
+        <mat-label>Company</mat-label>
+        <mat-select (selectionChange)="companyChange($event.value)">
+            <mat-option value="0">Select Company</mat-option>
+            @for(item of companyList;track item){
+            <mat-option [value]="item.companyId">{{item.companyName}}</mat-option>
+            }
+        </mat-select>
+      </mat-form-field>
         <table mat-table [dataSource]="dataSource" style="margin-top: 5px;" class="mat-elevation-z8">
 
             <!--- Note that these columns can be defined in any order.

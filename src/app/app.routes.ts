@@ -13,6 +13,7 @@ import { TranslistComponent } from './component/transaction/translist/translist.
 import { CreatetransComponent } from './component/transaction/createtrans/createtrans.component';
 import { TenantlistComponent } from './component/tenant/tenantlist/tenantlist.component';
 import { CreatetenantComponent } from './component/tenant/createtenant/createtenant.component';
+import { ReportComponent } from './component/report/report.component';
 
 export const routes: Routes = [
     {
@@ -74,6 +75,9 @@ export const routes: Routes = [
     },
     {
         path: 'update-trans/:id', component: CreatetransComponent,canActivate:[authGuard]
+    },
+    {
+        path:'reports',component:ReportComponent
     }
     
 ];

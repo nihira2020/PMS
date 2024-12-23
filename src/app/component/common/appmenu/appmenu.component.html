@@ -1,7 +1,7 @@
 @if(showmenu){
     <div>
         <mat-toolbar color="primary" class="mat-elevation-z8">
-            <button mat-icon-button >
+            <button mat-icon-button routerLink="/" >
                 <mat-icon>menu</mat-icon>
             </button>
             <span>Property Management system</span>
@@ -11,6 +11,7 @@
             <button mat-button routerLink="/tenant-list">Tenats</button>
             <button mat-button routerLink="/rentpay">Rent Pay</button>
             <button mat-button routerLink="/expense">Expense</button>
+            <button mat-button routerLink="/reports">Reports</button>
             
             <span>{{Loginuser}}</span>
             <button mat-button [matMenuTriggerFor]="profile"><mat-icon>arrow_drop_down</mat-icon></button>

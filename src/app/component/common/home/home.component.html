@@ -1,1 +1,66 @@
-<p>home works!</p>
+
+  
+
+
+  <mat-grid-list cols="3" rowHeight="2:1" style="width: 70%;margin-left: 15%;">
+    <mat-grid-tile >
+        <mat-card routerLink="/company-list" appearance="outlined" style="background-color: lightblue;">
+            <mat-card-header>
+                <mat-card-title><mat-icon fontIcon="table_chart"></mat-icon></mat-card-title>
+              <mat-card-title>Manage Companies</mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+              <p>
+                Create, view ,update and delete companies.
+              </p>
+            </mat-card-content>
+          </mat-card>
+    </mat-grid-tile>
+
+    <mat-grid-tile >
+        <mat-card routerLink="/property-list" appearance="outlined" style="background-color: #ff408166;">
+            <mat-card-header>
+                
+              <br>
+              <mat-card-title><mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="home"></mat-icon></mat-card-title>
+              <mat-card-title>Manage Properties</mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+              <p>
+                Create, view ,update and delete properties.
+              </p>
+            </mat-card-content>
+          </mat-card>
+    </mat-grid-tile>
+
+    <mat-grid-tile >
+        <mat-card routerLink="/tenant-list" appearance="outlined" style="background-color: #87cee5;">
+            <mat-card-header>
+              <div mat-card-avatar class="example-header-image"></div>
+              <mat-card-title><mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="people"></mat-icon></mat-card-title>
+              <mat-card-title>Manage Tenants</mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+              <p>
+                Create, view ,update and delete tenants.
+              </p>
+            </mat-card-content>
+          </mat-card>
+    </mat-grid-tile>
+
+    <mat-grid-tile >
+        <mat-card routerLink="/rentpay" appearance="outlined" style="background-color: #fff440">
+            <mat-card-header>
+                <mat-card-title><mat-icon fontIcon="money"></mat-icon></mat-card-title>
+              <mat-card-title>Manage Transactions</mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+              <p>
+                Create, view ,update and delete transactions.
+              </p>
+            </mat-card-content>
+          </mat-card>
+    </mat-grid-tile>
+
+    
+  </mat-grid-list>
