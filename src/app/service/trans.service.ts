@@ -29,4 +29,8 @@ export class TransService {
     return this.http.get<ReportSummary>(this.apiUrl + 'totals/'+tenantId);
   }
 
+  ComGetReportSummary(PropertyId:number){
+    return this.http.get<ReportSummary>(this.apiUrl + 'totals/'+PropertyId);
+  }
+
 }

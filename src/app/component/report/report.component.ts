@@ -29,11 +29,19 @@ import { ReportSummary } from '../../model/ReportList';
 export class ReportComponent implements OnInit {
 
   title = 'Tenant Financial Summary';
+  companytitle = 'Company & Property Financial Summary';
   companyList: Companies[] = []
   propertyList: Properties[] = []
+  compropertyList: Properties[] = []
   tenantList: Tenants[] = []
   reportList: ReportList[] = [];
   reportSummary: ReportSummary = {
+    totalIncome: 0,
+    totalExpenses: 0,
+    balance: 0
+  };
+
+  comreportSummary: ReportSummary = {
     totalIncome: 0,
     totalExpenses: 0,
     balance: 0
@@ -75,6 +83,21 @@ export class ReportComponent implements OnInit {
 
   }
 
+  comcompanyChange(value: any) {
+    let companyId = value as number;
+    if (companyId > 0) {
+      this.pservice.GetAllProperty().subscribe(item => {
+        this.compropertyList = item;
+        this.compropertyList = this.compropertyList.filter(o => o.companyId == companyId);
+      })
+    } else {
+      this.compropertyList = [];
+    }
+    this.ComclearReport();
+
+  }
+  
+
   propertyChange(value: any) {
     let propertyId = value as number;
     if (propertyId > 0) {
@@ -110,10 +133,33 @@ export class ReportComponent implements OnInit {
     })
   }
 
+  ComGetReportSummary(propertyId: number) {
+    this.service.ComGetReportSummary(propertyId).subscribe(item => {
+      this.comreportSummary = item;
+    })
+  }
+
   clearReport() {
     this.reportList = [];
     this.dataSource = new MatTableDataSource(this.reportList);
     this.reportSummary = {
+      totalIncome: 0,
+      totalExpenses: 0,
+      balance: 0
+    };
+  }
+
+  compropertyChange(value: any) {
+    let PropertyId = value as number;
+    if (PropertyId > 0) {
+      this.ComGetReportSummary(PropertyId);
+    }else{
+      this.ComclearReport();
+    }
+  }
+  ComclearReport() {
+    
+    this.comreportSummary = {
       totalIncome: 0,
       totalExpenses: 0,
       balance: 0
